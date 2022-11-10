@@ -1,0 +1,18 @@
+# docker-compose build
+version: '3.1'
+volumes:
+  postgres-data: null
+services:
+  MagikarpDB:
+    image: postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql
+    environment:
+      - POSTGRES_DB=Magikarp
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_USER=docker
+    ports:
+      - 5432:5432
+    restart: on-failure
+    healthcheck:
+      test: 'exit 0'
